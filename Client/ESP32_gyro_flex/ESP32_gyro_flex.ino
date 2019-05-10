@@ -1,6 +1,6 @@
-#include <Wire.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
+#include <Wire.h>
 #include <OSCMessage.h>
 #include <OSCBundle.h>
 #include <OSCData.h>
@@ -25,8 +25,8 @@ const unsigned int localPort = 10000;
 const uint8_t MPU6050SlaveAddress = 0x68;
 
 // Select SDA and SCL pins for I2C communication 
-const uint8_t scl = 22;
-const uint8_t sda = 23;
+const uint8_t scl = G0;
+const uint8_t sda = G2;
 
 // sensitivity scale factor respective to full scale setting provided in datasheet 
 const uint16_t AccelScaleFactor = 16384;
@@ -47,7 +47,7 @@ const uint8_t MPU6050_REGISTER_SIGNAL_PATH_RESET  = 0x68;
 
 int16_t AccelX, AccelY, AccelZ, Temperature, GyroX, GyroY, GyroZ;
 // flex:
-const int flexpin = 14; //G25
+//const int flexpin = 14; //G25
 
 void setup() {
   Serial.begin(9600);
@@ -101,11 +101,6 @@ void loop() {
   Serial.print(" Gx: "); Serial.print(Gx);
   Serial.print(" Gy: "); Serial.print(Gy);
   Serial.print(" Gz: "); Serial.println(Gz);
-  //readFlex();
-  int flexposition; // Input value from the analog pin.
-  flexposition = analogRead(flexpin); // Read the position of the flex sensor (0 to 1023):
-  Serial.print("sensor: ");
-  Serial.print(flexposition);
   //Send OSC Message
   OSCBundle bndl;
   UDP.beginPacket(outIp, outPort);

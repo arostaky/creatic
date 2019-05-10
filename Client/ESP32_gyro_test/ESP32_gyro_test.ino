@@ -25,8 +25,8 @@ const unsigned int localPort = 10000;
 const uint8_t MPU6050SlaveAddress = 0x68;
 
 // Select SDA and SCL pins for I2C communication 
-const uint8_t scl = 22;
-const uint8_t sda = 23;
+const uint8_t scl = 25; // GPIO 25
+const uint8_t sda = 26; // GPIO 26
 
 // sensitivity scale factor respective to full scale setting provided in datasheet 
 const uint16_t AccelScaleFactor = 16384;
