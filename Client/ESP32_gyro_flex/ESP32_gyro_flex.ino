@@ -46,6 +46,8 @@ const uint8_t MPU6050_REGISTER_ACCEL_XOUT_H =  0x3B;
 const uint8_t MPU6050_REGISTER_SIGNAL_PATH_RESET  = 0x68;
 
 int16_t AccelX, AccelY, AccelZ, Temperature, GyroX, GyroY, GyroZ;
+// flex:
+const int flexpin = 14; //G25
 
 void setup() {
   Serial.begin(9600);
@@ -99,7 +101,11 @@ void loop() {
   Serial.print(" Gx: "); Serial.print(Gx);
   Serial.print(" Gy: "); Serial.print(Gy);
   Serial.print(" Gz: "); Serial.println(Gz);
-  
+  //readFlex();
+  int flexposition; // Input value from the analog pin.
+  flexposition = analogRead(flexpin); // Read the position of the flex sensor (0 to 1023):
+  Serial.print("sensor: ");
+  Serial.print(flexposition);
   //Send OSC Message
   OSCBundle bndl;
   UDP.beginPacket(outIp, outPort);
@@ -115,7 +121,7 @@ void loop() {
   UDP.endPacket();
   msg.empty();
   delay(10);
-  delay(100);
+  //delay(100);
 }
 
 void I2C_Write(uint8_t deviceAddress, uint8_t regAddress, uint8_t data){
@@ -168,3 +174,11 @@ boolean LaunchUDP(unsigned int localPort){
   }
   return state;
 }
+//void readFlex(){
+//  int flexposition; // Input value from the analog pin.
+//  flexposition = analogRead(flexpin); // Read the position of the flex sensor (0 to 1023):
+//  Serial.print("sensor: ");
+//  Serial.print(flexposition);
+//  
+//  delay(20);
+//}

@@ -5,8 +5,8 @@
 #include <OSCBundle.h>
 #include <OSCData.h>
 #ifndef STASSID
-#define STASSID "Patricio"
-#define STAPSK  "Patricio123"
+#define STASSID "TPCast_AP"
+#define STAPSK  "12345678"
 #endif
 
 WiFiUDP UDP;
@@ -15,9 +15,9 @@ WiFiUDP UDP;
 const char* ssid     = STASSID;
 const char* password = STAPSK;
 
-const char* host = "10.42.0.17";
+const char* host = "192.168.144.100";
 //const uint16_t port = 12000;
-const IPAddress outIp(10,42,0,17);          // remote IP (not needed for receive)
+const IPAddress outIp(192,168,144,100);           // remote IP (not needed for receive)
 const unsigned int outPort = 12000;          // remote port (not needed for receive)
 const unsigned int localPort = 10000; 
 
@@ -168,4 +168,3 @@ boolean LaunchUDP(unsigned int localPort){
   }
   return state;
 }
-
