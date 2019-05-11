@@ -1,0 +1,186 @@
+#N canvas 87 74 1135 726 10;
+#X obj 15 96 main_fire;
+#X obj -207 79 main_water;
+#X obj 241 77 main_wind;
+#X obj -251 167 *~;
+#X obj -122 5 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 3 168 *~;
+#X obj 92 16 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 267 114 *~;
+#X obj 311 4 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 567 153 *~;
+#X obj 638 5 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 539 65 main_insects;
+#X obj -167 7 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 51 26 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj -182 33 sel 0;
+#X msg -179 55 0;
+#X obj 38 52 sel 0;
+#X msg 41 73 0;
+#X obj 277 -3 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 268 23 sel 0;
+#X msg 268 50 0;
+#X obj 538 19 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 569 13 sel 0;
+#X msg 569 40 0;
+#X obj 215 541 c.meter~ @size 9 71 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @bgcolor 0.7 0.7 0.7 1 @bdcolor 0.5 0.5 0.5 1 @coldcolor
+0 0.6 0 0.8 @tepidcolor 0.6 0.73 0 0.8 @warmcolor 0.85 0.85 0 0.8 @hotcolor
+1 0.6 0 0.8 @overcolor 1 0 0 0.8;
+#X obj 395 540 c.meter~ @size 9 71 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @bgcolor 0.7 0.7 0.7 1 @bdcolor 0.5 0.5 0.5 1 @coldcolor
+0 0.6 0 0.8 @tepidcolor 0.6 0.73 0 0.8 @warmcolor 0.85 0.85 0 0.8 @hotcolor
+1 0.6 0 0.8 @overcolor 1 0 0 0.8;
+#X msg 292 544 \; pd dsp 1;
+#X msg 292 579 \; pd dsp 0;
+#X obj 534 180 hoa.2d.encoder~ 7 ------------------------;
+#X obj 192 629 hoa.dac~ 1 2 -----------------------------;
+#X obj 200 499 hoa.2d.decoder~ 7 binaural 2 @crop 256;
+#X obj 726 148 c.number~ @size 53 15 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @decimal 6 @bgcolor 0.75 0.75 0.75 1 @bdcolor 0.5 0.5
+0.5 1 @textcolor 0 0 0 1;
+#X obj 726 118 hoa.pi~ 2;
+#X obj 726 93 phasor~ -0.3;
+#X obj -264 192 hoa.2d.encoder~ 7 ------------------------;
+#X obj -70 153 c.number~ @size 53 15 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @decimal 6 @bgcolor 0.75 0.75 0.75 1 @bdcolor 0.5 0.5
+0.5 1 @textcolor 0 0 0 1;
+#X obj -79 101 phasor~ -0.1;
+#X obj -72 124 hoa.pi~ 3;
+#X obj 9 194 hoa.2d.encoder~ 7 ------------------------;
+#X obj 171 164 c.number~ @size 53 15 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @decimal 6 @bgcolor 0.75 0.75 0.75 1 @bdcolor 0.5 0.5
+0.5 1 @textcolor 0 0 0 1;
+#X obj 167 115 phasor~ -0.2;
+#X obj 167 139 hoa.pi~ 2;
+#X obj 270 177 hoa.2d.encoder~ 7 ------------------------;
+#X obj 445 150 c.number~ @size 53 15 @fontname "Helvetica" @fontweight
+"normal" @fontslant "roman" @fontsize 11 @receive "(null)" @send "(null)"
+@interval 50 @decimal 6 @bgcolor 0.75 0.75 0.75 1 @bdcolor 0.5 0.5
+0.5 1 @textcolor 0 0 0 1;
+#X obj 443 97 phasor~ -0.5;
+#X obj 444 123 hoa.pi~ 4;
+#X text 180 162 comment;
+#X text 461 145 comment;
+#X text 743 140 comment;
+#X text -101 7 and level up the;
+#X text -106 26 slider to the vol u need;
+#X text -104 -9 start each element by clicking on toggle;
+#X connect 0 0 5 0;
+#X connect 1 0 3 0;
+#X connect 2 0 7 0;
+#X connect 2 1 7 0;
+#X connect 3 0 34 0;
+#X connect 4 0 3 1;
+#X connect 5 0 38 0;
+#X connect 6 0 5 1;
+#X connect 7 0 42 0;
+#X connect 8 0 7 1;
+#X connect 9 0 28 0;
+#X connect 10 0 9 1;
+#X connect 11 0 9 0;
+#X connect 12 0 1 0;
+#X connect 12 0 14 0;
+#X connect 13 0 0 0;
+#X connect 13 0 16 0;
+#X connect 14 0 15 0;
+#X connect 15 0 4 0;
+#X connect 16 0 17 0;
+#X connect 17 0 6 0;
+#X connect 18 0 19 0;
+#X connect 18 0 2 0;
+#X connect 19 0 20 0;
+#X connect 20 0 8 0;
+#X connect 21 0 22 0;
+#X connect 21 0 11 0;
+#X connect 22 0 23 0;
+#X connect 23 0 10 0;
+#X connect 28 0 30 0;
+#X connect 28 1 30 1;
+#X connect 28 2 30 2;
+#X connect 28 3 30 3;
+#X connect 28 4 30 4;
+#X connect 28 5 30 5;
+#X connect 28 6 30 6;
+#X connect 28 7 30 7;
+#X connect 28 8 30 8;
+#X connect 28 9 30 9;
+#X connect 28 10 30 10;
+#X connect 28 11 30 11;
+#X connect 28 12 30 12;
+#X connect 28 13 30 13;
+#X connect 28 14 30 14;
+#X connect 30 0 29 0;
+#X connect 30 0 24 0;
+#X connect 30 1 25 0;
+#X connect 30 1 29 1;
+#X connect 32 0 31 0;
+#X connect 32 0 28 1;
+#X connect 33 0 32 1;
+#X connect 34 0 30 0;
+#X connect 34 1 30 1;
+#X connect 34 2 30 2;
+#X connect 34 3 30 3;
+#X connect 34 4 30 4;
+#X connect 34 5 30 5;
+#X connect 34 6 30 6;
+#X connect 34 7 30 7;
+#X connect 34 8 30 8;
+#X connect 34 9 30 9;
+#X connect 34 10 30 10;
+#X connect 34 11 30 11;
+#X connect 34 12 30 12;
+#X connect 34 13 30 13;
+#X connect 34 14 30 14;
+#X connect 36 0 37 1;
+#X connect 37 0 35 0;
+#X connect 37 0 34 1;
+#X connect 38 0 30 0;
+#X connect 38 1 30 1;
+#X connect 38 2 30 2;
+#X connect 38 3 30 3;
+#X connect 38 4 30 4;
+#X connect 38 5 30 5;
+#X connect 38 6 30 6;
+#X connect 38 7 30 7;
+#X connect 38 8 30 8;
+#X connect 38 9 30 9;
+#X connect 38 10 30 10;
+#X connect 38 11 30 11;
+#X connect 38 12 30 12;
+#X connect 38 13 30 13;
+#X connect 38 14 30 14;
+#X connect 40 0 41 1;
+#X connect 41 0 39 0;
+#X connect 41 0 38 1;
+#X connect 42 0 30 0;
+#X connect 42 1 30 1;
+#X connect 42 2 30 2;
+#X connect 42 3 30 3;
+#X connect 42 4 30 4;
+#X connect 42 5 30 5;
+#X connect 42 6 30 6;
+#X connect 42 7 30 7;
+#X connect 42 8 30 8;
+#X connect 42 9 30 9;
+#X connect 42 10 30 10;
+#X connect 42 11 30 11;
+#X connect 42 12 30 12;
+#X connect 42 13 30 13;
+#X connect 42 14 30 14;
+#X connect 44 0 45 1;
+#X connect 45 0 43 0;
+#X connect 45 0 42 1;
