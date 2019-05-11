@@ -5,7 +5,7 @@
 #include <OSCBundle.h>
 #include <OSCData.h>
 #ifndef STASSID
-#define STASSID "TPCast_AP"
+#define STASSID "TPCast_AP2G"
 #define STAPSK  "12345678"
 #endif
 
@@ -103,7 +103,7 @@ void loop() {
   //Send OSC Message
   OSCBundle bndl;
   UDP.beginPacket(outIp, outPort);
-  OSCMessage msg("/Patricio");
+  OSCMessage msg("/Yorgos");
   msg.add(Ax);
   msg.add(Ay);
   msg.add(Az); 
