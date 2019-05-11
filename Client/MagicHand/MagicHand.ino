@@ -14,11 +14,11 @@
 #define CONDUCTIVE_HEADER   "/ConductHand"
 
 //Wifi connection Adress
-const char *ssid = "ana";
-const char *password = "Brahms37";
+const char *ssid = "TPCast_AP2G";
+const char *password = "12345678";
 
 WiFiUDP UDP;
-const IPAddress outIp(192,168,137,1);        // remote IP (not needed for receive)
+const IPAddress outIp(192,168,144,100);        // remote IP (not needed for receive)
 const unsigned int outPort = 12000;          // remote port (not needed for receive)
 const unsigned int localPort = 10000;   
 
