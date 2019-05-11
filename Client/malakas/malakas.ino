@@ -113,11 +113,16 @@ void loop() {
   msg.add(T); 
   msg.add(Gx);
   msg.add(Gy);
-  msg.add(Gz);    
+  msg.add(Gz);
+  //add sensors msg:
+  msg.add(sensorA);
+  msg.add(sensorB); 
+  msg.add(sensorC); 
+  msg.add(sensorD);    
   msg.send(UDP);
   UDP.endPacket();
   msg.empty();
-  delay(10);
+  delay(100);
 }
 
 void I2C_Write(uint8_t deviceAddress, uint8_t regAddress, uint8_t data){
@@ -189,8 +194,6 @@ void sensorRead(){
   Serial.print(sensorD);
   Serial.println(" ");
   //return [sensorA, sensorB, sensorC, sensorD];
-  delay(500);
+  delay(100);
   
 }
-
-
