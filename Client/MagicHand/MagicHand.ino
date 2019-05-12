@@ -1,6 +1,6 @@
 
 #include <ESP8266WiFi.h>
-#include <WiFiUDP.h>
+#include <WiFiUdp.h>
 #include <OSCMessage.h>
 #include <OSCBundle.h>
 #include <OSCData.h>
@@ -12,14 +12,13 @@
 #define LEFT_HEADER   "/LeftVibe"
 #define RIGHT_HEADER  "/RightVibe"
 #define CONDUCTIVE_HEADER   "/ConductHand"
-
 //Wifi connection Adress
 const char *ssid = "TPCast_AP2G";
 const char *password = "12345678";
 
 WiFiUDP UDP;
 const IPAddress outIp(192,168,144,100);        // remote IP (not needed for receive)
-const unsigned int outPort = 12000;          // remote port (not needed for receive)
+const unsigned int outPort = 14000;          // remote port (not needed for receive)
 const unsigned int localPort = 10000;   
 
 //OSC
@@ -92,6 +91,7 @@ void loop() {
   msgOut.send(UDP);
   UDP.endPacket();
   msgOut.empty();
+  delay(50);
 }
 
 //OSC CALLBACK
