@@ -91,6 +91,7 @@ void setup() {
   LaunchUDP(localPort);
   //motor vibration:
   pinMode(motorPin, OUTPUT);
+  pinMode(27, INPUT);
 }
 
 void loop() {
@@ -102,7 +103,7 @@ void loop() {
   Ax = (double)AccelX / AccelScaleFactor;
   Ay = (double)AccelY / AccelScaleFactor;
   Az = (double)AccelZ / AccelScaleFactor;
-  T = (double)Temperature / 340 + 36.53; //temperature formula
+  T =  (double)Temperature / 340 + 36.53; //temperature formula
   Gx = (double)GyroX / GyroScaleFactor;
   Gy = (double)GyroY / GyroScaleFactor;
   Gz = (double)GyroZ / GyroScaleFactor;
@@ -231,13 +232,13 @@ void motorVibrator() {
   {
     motorState = LOW;  // Turn it off
     previousMillis = currentMillis;  // Remember the time
-    digitalWrite(motorPin, motorState);  // Update the actual LED
+    digitalWrite(motorPin, motorState);  // Update the actual motor
   }
   else if ((motorState == LOW) && (currentMillis - previousMillis >= OffTime))
   {
     motorState = HIGH;  // turn it on
     previousMillis = currentMillis;   // Remember the time
-    digitalWrite(motorPin, motorState);   // Update the actual LED
+    digitalWrite(motorPin, motorState);   // Update the actual motor
   }
   //Serial.println("count: ");
   //Serial.println(countMotor);
