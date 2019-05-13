@@ -49,8 +49,8 @@ int16_t AccelX, AccelY, AccelZ, Temperature, GyroX, GyroY, GyroZ;
 int sensorA, sensorB, sensorC, sensorD;
 int lightSensor;
 // create global variables for motor and delay function without delay() global from arduino
-int motorPin = 2;
-// Variables will change:
+int motorPin = 15;
+// Variables will hange:
 int motorState = LOW;             // ledState used to set the LED
 // Generally, you should use "unsigned long" for variables that hold time
 // The value will quickly become too large for an int to store
@@ -239,8 +239,8 @@ void motorVibrator() {
     previousMillis = currentMillis;   // Remember the time
     digitalWrite(motorPin, motorState);   // Update the actual LED
   }
-  Serial.println("count: ");
-  Serial.println(countMotor);
+  //Serial.println("count: ");
+  //Serial.println(countMotor);
   if(countMotor == 4){
    // OnTime = 0;
     OffTime = 1100;
