@@ -1,10 +1,10 @@
-#N canvas 67 192 1910 723 10;
+#N canvas 10 201 1910 723 10;
 #X obj 93 640 diode~;
 #X obj 93 581 harmgen~, f 110;
 #X obj 526 930 dac~;
 #X obj 93 487 cycle~;
 #X obj 539 828 hsl 128 15 0.01 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1700 1;
+-1 -1 0 1;
 #X obj 526 848 *~;
 #X obj 585 930 tabwrite~ osc;
 #X obj 585 848 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
@@ -15,7 +15,7 @@
 #X restore 771 843 graph;
 #X obj 585 879 metro 100;
 #X obj 126 614 hsl 128 15 0.01 2.5 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 2600 1;
+-262144 -1 -1 0 1;
 #X obj 156 336 vsnapshot~;
 #X obj 156 309 cycle~;
 #X msg 34 312 bang;
@@ -88,44 +88,44 @@
 #X text 802 355 Offset;
 #X text 778 204 Mod Freq;
 #X obj 750 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7800 1;
+-1 -1 6800 1;
 #X msg 454 118 0;
 #X obj 156 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6700 1;
+-1 -1 0 1;
 #X obj 223 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6600 1;
+-1 -1 0 1;
 #X obj 290 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6700 1;
+-1 -1 6000 1;
 #X obj 357 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9900 1;
-#X obj 422 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 5700 1;
+#X obj 422 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4800 1;
 #X obj 489 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7000 1;
+-1 -1 4900 1;
 #X obj 555 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6900 1;
+-1 -1 0 1;
 #X obj 622 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8000 1;
+-1 -1 6300 1;
 #X obj 685 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4600 1;
+-1 -1 5500 1;
 #X obj 750 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6450 1;
+-1 -1 7850 1;
 #X obj 156 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4950 1;
+-1 -1 6550 1;
 #X obj 222 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4950 1;
-#X obj 288 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4950 1;
+-1 -1 6350 1;
+#X obj 291 459 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5700 1;
 #X obj 354 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6750 1;
+-1 -1 6950 1;
 #X obj 420 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6450 1;
+-1 -1 6250 1;
 #X obj 486 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 6150 1;
 #X obj 552 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 6650 1;
 #X obj 618 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6450 1;
+-1 -1 6650 1;
 #X obj 684 455 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 7150 1;
 #X text 610 848 Oscilloscope ON;
@@ -133,11 +133,11 @@
 #X obj 34 277 r snaptrig;
 #X text 153 17 Mod ON;
 #X obj 965 569 vsl 25 100 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4200 1;
+-1 -1 2600 1;
 #X obj 808 569 vsl 25 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3500 1;
+-1 -1 100 1;
 #X obj 874 569 vsl 25 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4700 1;
+-1 -1 0 1;
 #X text 963 60 Reset Synth;
 #X msg 934 60 0;
 #X obj 1127 639 diode~;
@@ -215,43 +215,43 @@
 -1 -1 0 1;
 #X msg 1488 118 0;
 #X obj 1190 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6900 1;
 #X obj 1257 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5800 1;
 #X obj 1324 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 8300 1;
 #X obj 1391 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5500 1;
 #X obj 1456 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5000 1;
 #X obj 1523 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5800 1;
 #X obj 1589 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6000 1;
 #X obj 1656 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 4900 1;
 #X obj 1719 183 vsl 25 100 0 20 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7000 1;
+-1 -1 0 1;
 #X obj 1784 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7450 1;
+-1 -1 4950 1;
 #X obj 1190 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5850 1;
+-1 -1 7050 1;
 #X obj 1256 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6450 1;
+-1 -1 7850 1;
 #X obj 1322 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6050 1;
+-1 -1 5850 1;
 #X obj 1388 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 5650 1;
 #X obj 1454 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5650 1;
-#X obj 1520 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 6050 1;
+#X obj 1520 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5650 1;
 #X obj 1586 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6850 1;
-#X obj 1652 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6250 1;
-#X obj 1718 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 5850 1;
+#X obj 1652 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4950 1;
+#X obj 1718 454 vsl 25 100 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4950 1;
 #X obj 1068 276 r snaptrig;
 #X obj 1128 697 *~;
 #X obj 1216 642 r mod;
@@ -279,7 +279,7 @@
 #X obj 1127 513 +~;
 #X obj 1142 488 r~ 2mod;
 #X obj 1031 569 vsl 25 100 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3300 1;
+-1 -1 1300 1;
 #X obj 1031 684 s crossmod;
 #X text 797 703 Carrier;
 #X text 890 703 Modulator;
@@ -658,7 +658,7 @@ CONNECTED TO EACH HARMONIC. THIS ALLOWS TO MORPH WAVESHAPES OVER TIME.
 #X obj 384 333 + 0;
 #X floatatom 416 335 5 0 0 0 - - -;
 #X obj 528 182 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7900 1;
+-1 -1 0 1;
 #X msg 462 335 1;
 #X obj 654 59 sel 0 1 2 3 4;
 #X msg 639 78 24;
@@ -1032,6 +1032,16 @@ CONNECTED TO EACH HARMONIC. THIS ALLOWS TO MORPH WAVESHAPES OVER TIME.
 #X restore 368 36 pd keytomidi;
 #X floatatom 567 39 5 0 0 0 - - -;
 #X obj 530 81 ftom;
+#X obj 410 736 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 402 625 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 227 869 5 0 0 0 - - -;
+#X floatatom 120 819 5 0 0 0 - - -;
+#X obj 265 785 random 10;
+#X obj 300 832 / 9;
+#X obj 479 664 random 1000;
+#X obj 457 710 metro;
 #X connect 0 0 205 0;
 #X connect 0 0 221 0;
 #X connect 1 0 0 0;
@@ -1171,6 +1181,7 @@ CONNECTED TO EACH HARMONIC. THIS ALLOWS TO MORPH WAVESHAPES OVER TIME.
 #X connect 93 0 1 1;
 #X connect 94 0 1 2;
 #X connect 95 0 1 3;
+#X connect 95 0 267 0;
 #X connect 96 0 1 4;
 #X connect 97 0 1 5;
 #X connect 98 0 1 6;
@@ -1362,3 +1373,9 @@ CONNECTED TO EACH HARMONIC. THIS ALLOWS TO MORPH WAVESHAPES OVER TIME.
 #X connect 250 0 110 0;
 #X connect 262 0 263 0;
 #X connect 263 0 210 0;
+#X connect 264 0 268 0;
+#X connect 265 0 270 0;
+#X connect 268 0 269 0;
+#X connect 269 0 266 0;
+#X connect 270 0 271 0;
+#X connect 271 0 264 0;
