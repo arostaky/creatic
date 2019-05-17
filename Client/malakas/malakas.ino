@@ -108,16 +108,13 @@ void loop() {
   Gy = (double)GyroY / GyroScaleFactor;
   Gz = (double)GyroZ / GyroScaleFactor;
   //
-  //  Serial.print("Ax: "); Serial.print(Ax);
-  //  Serial.print(" Ay: "); Serial.print(Ay);
-  //  Serial.print(" Az: "); Serial.print(Az);
-  //  Serial.print(" T: "); Serial.print(T);
-  //  Serial.print(" Gx: "); Serial.print(Gx);
-  //  Serial.print(" Gy: "); Serial.print(Gy);
-  //  Serial.print(" Gz: "); Serial.println(Gz);
-  //dataQuad:
-//  handlequat();
-String return_handlequat = dataQuat();
+    Serial.print("Ax: "); Serial.print(Ax);
+    Serial.print(" Ay: "); Serial.print(Ay);
+    Serial.print(" Az: "); Serial.print(Az);
+    Serial.print(" T: "); Serial.print(T);
+    Serial.print(" Gx: "); Serial.print(Gx);
+    Serial.print(" Gy: "); Serial.print(Gy);
+    Serial.print(" Gz: "); Serial.println(Gz);
   // sensor read:
   sensorRead();
   // light sensor:
@@ -136,83 +133,16 @@ String return_handlequat = dataQuat();
   msg.add(Gy);
   msg.add(Gz);
   //add sensors msg:
-  msg.add(sensorA);
-  msg.add(sensorB);
-  msg.add(sensorC);
-  msg.add(sensorD);
-  msg.add(return_handlequat);
+//  msg.add(sensorA);
+//  msg.add(sensorB);
+//  msg.add(sensorC);
+//  msg.add(sensorD);
   msg.send(UDP);
   UDP.endPacket();
   msg.empty();
   delay(50);
 }
-void handlequat()
-{
-  String d = dataQuat();
-  //server.send(200, "", d);
-  //Serial.println(d);
-}
 
-
-// this is message id as in User Manual
-const char GET_QUAT_DATA = 0x02;
-
-// response is 16 bytes (4 x sizeof(float))
-const char QUAT_DATA_SIZE = 16;
-
-// packet structure for InvenSense teapot demo
-uint8_t teapotPacket[14] = { '$', 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0x00, 0x00, '\r', '\n' };
-
-char * Read_RawQuatValue(uint8_t deviceAddress, uint8_t regAddress) {
-  Wire.beginTransmission(deviceAddress);
-  Wire.write(GET_QUAT_DATA);
-  Wire.endTransmission();
-  Wire.requestFrom(deviceAddress, (uint8_t)QUAT_DATA_SIZE);
-  /*AccelX = (((int16_t)Wire.read() << 8) | Wire.read());
-    AccelY = (((int16_t)Wire.read() << 8) | Wire.read());
-    AccelZ = (((int16_t)Wire.read() << 8) | Wire.read());
-    Temperature = (((int16_t)Wire.read() << 8) | Wire.read());
-    GyroX = (((int16_t)Wire.read() << 8) | Wire.read());
-    GyroY = (((int16_t)Wire.read() << 8) | Wire.read());
-    GyroZ = (((int16_t)Wire.read() << 8) | Wire.read());*/
-  int i = 0;
-  static char response[16], *teap;
-  while (Wire.available()) {
-    response[i++] = Wire.read();
-  }
-  teap = (char*)&teapotPacket;
-  teapotPacket[2] = response[0];
-  teapotPacket[3] = response[1];
-  teapotPacket[4] = response[4];
-  teapotPacket[5] = response[5];
-  teapotPacket[6] = response[8];
-  teapotPacket[7] = response[9];
-  teapotPacket[8] = response[12];
-  teapotPacket[9] = response[13];
-  teap[14] = 0;
-  teapotPacket[11]++; // packetCount, loops at 0xFF on purpose
-  /*float* quaternion = (float*)response;
-    String respQuat = "";
-    for (int a=0;a<14;a++)
-    respQuat += String(teapotPacket[a],BIN);
-    respQuat +="\nQ: ";
-    respQuat += quaternion[0];
-    respQuat += ", ";
-    respQuat += quaternion[1];
-    respQuat += ", ";
-    respQuat += quaternion[2];
-    respQuat += ", ";
-    respQuat += quaternion[3];*/
-  return teap ; //respQuat ;
-}
-
-String dataQuat()
-{
-  String out = "";
-  out += String(Read_RawQuatValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H));
-  out += "\n";
-  return out;
-}
 void I2C_Write(uint8_t deviceAddress, uint8_t regAddress, uint8_t data) {
   Wire.beginTransmission(deviceAddress);
   Wire.write(regAddress);
