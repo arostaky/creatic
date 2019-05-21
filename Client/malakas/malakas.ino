@@ -73,7 +73,10 @@ long OnTimeB = 33;           // milliseconds of on-time
 long OffTimeB = 1000;          // milliseconds of off-time
 // Define the array of leds
 CRGB leds[NUM_LEDS];
-
+//OSC get:
+OSCErrorCode error;
+#define MSG_HEADER   "/Flicker"
+int ReadFlickering = 1;
 void setup() {
   FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
   Serial.begin(9600);
@@ -110,7 +113,7 @@ void setup() {
 }
 
 void loop() {
-  ledMethod(0);
+  ledMethod(ReadFlickering);
   double Ax, Ay, Az, T, Gx, Gy, Gz;
 
   Read_RawValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
@@ -124,13 +127,13 @@ void loop() {
   Gy = (double)GyroY / GyroScaleFactor;
   Gz = (double)GyroZ / GyroScaleFactor;
   //
-  Serial.print("Ax: "); Serial.print(Ax);
-  Serial.print(" Ay: "); Serial.print(Ay);
-  Serial.print(" Az: "); Serial.print(Az);
-  Serial.print(" T: "); Serial.print(T);
-  Serial.print(" Gx: "); Serial.print(Gx);
-  Serial.print(" Gy: "); Serial.print(Gy);
-  Serial.print(" Gz: "); Serial.println(Gz);
+//  Serial.print("Ax: "); Serial.print(Ax);
+//  Serial.print(" Ay: "); Serial.print(Ay);
+//  Serial.print(" Az: "); Serial.print(Az);
+//  Serial.print(" T: "); Serial.print(T);
+//  Serial.print(" Gx: "); Serial.print(Gx);
+//  Serial.print(" Gy: "); Serial.print(Gy);
+//  Serial.print(" Gz: "); Serial.println(Gz);
   // sensor read:
   sensorRead();
   // light sensor:
@@ -138,6 +141,24 @@ void loop() {
   //Send OSC Message
   // motorVibration:
   motorVibrator();
+
+//OSC Handle
+  OSCMessage msgIn;
+  int size = UDP.parsePacket();
+
+  if (size > 0) {
+    while (size--) {
+      msgIn.fill(UDP.read());
+    }
+    if (!msgIn.hasError()) {
+      msgIn.dispatch(MSG_HEADER, ReadFlickMsg );
+    }
+      else {
+      error = msgIn.getError();
+      Serial.print("error: ");
+      Serial.println(error);
+    }
+  }
   OSCBundle bndl;
   UDP.beginPacket(outIp, outPort);
   OSCMessage msg("/Yorgos");
@@ -216,28 +237,28 @@ void sensorRead() {
   sensorC = analogRead(A4);
   sensorD = analogRead(A5);
   // print out the value you read:
-  Serial.print("Sensor0: " );
-  Serial.print(sensorA);
-  Serial.println(" ");
-  Serial.print("Sensor1: " );
-  Serial.print(sensorB);
-  Serial.println(" ");
-  Serial.print("Sensor2: " );
-  Serial.print(sensorC);
-  Serial.println(" ");
-  Serial.print("Sensor3: " );
-  Serial.print(sensorD);
-  Serial.println(" ");
+//  Serial.print("Sensor0: " );
+//  Serial.print(sensorA);
+//  Serial.println(" ");
+//  Serial.print("Sensor1: " );
+//  Serial.print(sensorB);
+//  Serial.println(" ");
+//  Serial.print("Sensor2: " );
+//  Serial.print(sensorC);
+//  Serial.println(" ");
+//  Serial.print("Sensor3: " );
+//  Serial.print(sensorD);
+//  Serial.println(" ");
   //return [sensorA, sensorB, sensorC, sensorD];
   delay(10);
 
 }
 void lightSensorRead() {
   lightSensor = analogRead(A0);
-  Serial.println("Light sensor:");
-  Serial.println("");
-  Serial.println(lightSensor);
-  Serial.println(" ");
+//  Serial.println("Light sensor:");
+//  Serial.println("");
+//  Serial.println(lightSensor);
+//  Serial.println(" ");
   delay(10);
 
 }
@@ -278,4 +299,13 @@ void ledMethod(bool param) {
     leds[0] = CRGB::Blue;
     leds[1] = CRGB::Blue;
   }
+}
+//OSC CALLBACK
+void ReadFlickMsg (OSCMessage &msg) {
+  ReadFlickering = msg.getInt(0);
+  //ledMethod(ReadFlickering);
+  //verbos
+  Serial.print("Reading flickering....");
+  //Serial.print(":");
+  Serial.println(ReadFlickering);
 }
