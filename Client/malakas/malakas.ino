@@ -67,7 +67,10 @@ long OffTime = 50;          // milliseconds of off-time
 // How many leds in your strip?
 #define NUM_LEDS 2
 #define LED_PIN 2
-
+unsigned long countLed = 0;
+unsigned long previousMillisB = 0;
+long OnTimeB = 33;           // milliseconds of on-time
+long OffTimeB = 1000;          // milliseconds of off-time
 // Define the array of leds
 CRGB leds[NUM_LEDS];
 
@@ -107,7 +110,7 @@ void setup() {
 }
 
 void loop() {
-  ledMethod();
+  ledMethod(0);
   double Ax, Ay, Az, T, Gx, Gy, Gz;
 
   Read_RawValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
@@ -154,7 +157,7 @@ void loop() {
   msg.send(UDP);
   UDP.endPacket();
   msg.empty();
-  delay(50);
+  delay(10);
 }
 
 void I2C_Write(uint8_t deviceAddress, uint8_t regAddress, uint8_t data) {
@@ -226,7 +229,7 @@ void sensorRead() {
   Serial.print(sensorD);
   Serial.println(" ");
   //return [sensorA, sensorB, sensorC, sensorD];
-  delay(100);
+  delay(10);
 
 }
 void lightSensorRead() {
@@ -235,7 +238,7 @@ void lightSensorRead() {
   Serial.println("");
   Serial.println(lightSensor);
   Serial.println(" ");
-  delay(100);
+  delay(10);
 
 }
 void motorVibrator() {
@@ -263,27 +266,16 @@ void motorVibrator() {
     countMotor = 0;
   }
 }
-void ledMethod() {
-  FastLED.show();
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CHSV(random8(255), 255, 255);
-  leds[1] = CHSV(random8(255), 255, 255);
-  FastLED.delay(33);
-  leds[0] = CRGB::Blue;
-  leds[1] = CRGB::Blue;
-  FastLED.delay(1000);
+void ledMethod(bool param) {
+  unsigned long currentMillisB = millis();
+  countLed++;
+  if ((param == 0 )&&(currentMillisB - previousMillisB >= OnTimeB)) {
+    FastLED.show();
+    leds[0] = CHSV(random8(255), 255, 255);
+    leds[1] = CHSV(random8(255), 255, 255);
+  } else if ((param == 1)&&(currentMillisB - previousMillisB >= OffTimeB)) {
+    FastLED.show();
+    leds[0] = CRGB::Blue;
+    leds[1] = CRGB::Blue;
+  }
 }
