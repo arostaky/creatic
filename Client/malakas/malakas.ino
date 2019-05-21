@@ -1,7 +1,7 @@
 //fastLed lib:
 #define FASTLED_ESP32_I2S
 #include <FastLED.h>
-
+#include <Ticker.h>
 #include <Wire.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
@@ -57,17 +57,10 @@ const uint8_t MPU6050_REGISTER_SIGNAL_PATH_RESET  = 0x68;
 int16_t AccelX, AccelY, AccelZ, Temperature, GyroX, GyroY, GyroZ;
 int sensorA, sensorB, sensorC, sensorD;
 int lightSensor;
-// create global variables for motor and delay function without delay() global from arduino
+// create global variables for motor
 int motorPin = 15;
-// Variables will hange:
-int motorState = LOW;             // motorState used to set the motor
-// Generally, you should use "unsigned long" for variables that hold time
-// The value will quickly become too large for an int to store
-unsigned long previousMillis = 0;        // will store last time motor was updated
-// constants won't change:
-unsigned long countMotor = 0;
-long OnTime = 200;           // milliseconds of on-time
-long OffTime = 700;          // milliseconds of off-time
+Ticker tickerSetHigh;
+Ticker tickerSetLow;
 // How many leds in your strip?
 #define NUM_LEDS 3
 #define LED_PIN 2
@@ -75,14 +68,16 @@ unsigned long countLed = 0;
 unsigned long previousMillisB = 0;
 long OnTimeB = 33;           // milliseconds of on-time
 long OffTimeB = 1000;          // milliseconds of off-time
+int ledState = 0;
 // Define the array of leds
-CRGB leds[NUM_LEDS];
+//CRGB leds[NUM_LEDS];
+CRGBArray<NUM_LEDS> leds;
 //OSC get:
 OSCErrorCode error;
 #define MSG_HEADER   "/Flicker"
 int ReadFlickering = 0;
 void setup() {
-  FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2812B, LED_PIN, RGB>(leds, NUM_LEDS);
   Serial.begin(9600);
   Wire.begin(sda, scl);
   MPU6050_Init();
@@ -96,7 +91,7 @@ void setup() {
   /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
      would try to act as both a client and an access-point and could cause
      network-issues with your other WiFi-devices on your WiFi-network. */
-      // Configures static IP address
+  // Configures static IP address
   if (!WiFi.config(local_IP, gateway, subnet)) {
     Serial.println("STA Failed to configure");
   }
@@ -118,6 +113,7 @@ void setup() {
   //motor vibration:
   pinMode(motorPin, OUTPUT);
   pinMode(27, INPUT);
+  motorVibrator();
 }
 
 void loop() {
@@ -135,22 +131,22 @@ void loop() {
   Gy = (double)GyroY / GyroScaleFactor;
   Gz = (double)GyroZ / GyroScaleFactor;
   //
-//  Serial.print("Ax: "); Serial.print(Ax);
-//  Serial.print(" Ay: "); Serial.print(Ay);
-//  Serial.print(" Az: "); Serial.print(Az);
-//  Serial.print(" T: "); Serial.print(T);
-//  Serial.print(" Gx: "); Serial.print(Gx);
-//  Serial.print(" Gy: "); Serial.print(Gy);
-//  Serial.print(" Gz: "); Serial.println(Gz);
+  //  Serial.print("Ax: "); Serial.print(Ax);
+  //  Serial.print(" Ay: "); Serial.print(Ay);
+  //  Serial.print(" Az: "); Serial.print(Az);
+  //  Serial.print(" T: "); Serial.print(T);
+  //  Serial.print(" Gx: "); Serial.print(Gx);
+  //  Serial.print(" Gy: "); Serial.print(Gy);
+  //  Serial.print(" Gz: "); Serial.println(Gz);
   // sensor read:
   sensorRead();
   // light sensor:
   lightSensorRead();
   //Send OSC Message
   // motorVibration:
-  motorVibrator();
-
-//OSC Handle
+  //  motorVibrator();
+  ledHeart(ledState);
+  //OSC Handle
   OSCMessage msgIn;
   int size = UDP.parsePacket();
 
@@ -161,7 +157,7 @@ void loop() {
     if (!msgIn.hasError()) {
       msgIn.dispatch(MSG_HEADER, ReadFlickMsg );
     }
-      else {
+    else {
       error = msgIn.getError();
       Serial.print("error: ");
       Serial.println(error);
@@ -245,67 +241,58 @@ void sensorRead() {
   sensorC = analogRead(A4);
   sensorD = analogRead(A5);
   // print out the value you read:
-//  Serial.print("Sensor0: " );
-//  Serial.print(sensorA);
-//  Serial.println(" ");
-//  Serial.print("Sensor1: " );
-//  Serial.print(sensorB);
-//  Serial.println(" ");
-//  Serial.print("Sensor2: " );
-//  Serial.print(sensorC);
-//  Serial.println(" ");
-//  Serial.print("Sensor3: " );
-//  Serial.print(sensorD);
-//  Serial.println(" ");
+  //  Serial.print("Sensor0: " );
+  //  Serial.print(sensorA);
+  //  Serial.println(" ");
+  //  Serial.print("Sensor1: " );
+  //  Serial.print(sensorB);
+  //  Serial.println(" ");
+  //  Serial.print("Sensor2: " );
+  //  Serial.print(sensorC);
+  //  Serial.println(" ");
+  //  Serial.print("Sensor3: " );
+  //  Serial.print(sensorD);
+  //  Serial.println(" ");
   //return [sensorA, sensorB, sensorC, sensorD];
   delay(10);
 
 }
 void lightSensorRead() {
   lightSensor = analogRead(A0);
-//  Serial.println("Light sensor:");
-//  Serial.println("");
-//  Serial.println(lightSensor);
-//  Serial.println(" ");
+  //  Serial.println("Light sensor:");
+  //  Serial.println("");
+  //  Serial.println(lightSensor);
+  //  Serial.println(" ");
   delay(10);
 
 }
+void setPin(int state) {
+  digitalWrite(motorPin, state);
+  ledState = state;
+}
 void motorVibrator() {
-  unsigned long currentMillis = millis();
-  countMotor++;
-  if ((motorState == HIGH) && (currentMillis - previousMillis >= OnTime))
-  {
-    motorState = LOW;  // Turn it off
-    previousMillis = currentMillis;  // Remember the time
-    digitalWrite(motorPin, motorState);  // Update the actual motor
-    leds[0] = CRGB::Red;
-  }
-  else if ((motorState == LOW) && (currentMillis - previousMillis >= OffTime))
-  {
-    motorState = HIGH;  // turn it on
-    previousMillis = currentMillis;   // Remember the time
-    digitalWrite(motorPin, motorState);   // Update the actual motor
-     FastLED.show();
-     leds[0] = CRGB::Blue;
-  }
-  if (countMotor == 4) {
-    // OnTime = 0;
-    OffTime = 120;
-  }
-  if (countMotor == 5) {
-    //OnTime = 20;
-    OffTime = 450;
-    countMotor = 0;
+//  tickerSetLow.attach_ms(200, setPin, 1); 
+//  tickerSetLow.attach_ms(100, setPin, 0);
+//  tickerSetLow.attach_ms(200, setPin, 1);
+//  tickerSetHigh.attach_ms(300, setPin, 0);
+}
+void ledHeart(int param) {
+  if (param == 1) {
+    FastLED.show();
+    leds[0] = CRGB::White;
+    //leds[0] = CHSV(random8(255), 255, 255);
+  } else if (param == 0) {
+    FastLED.show();
+    leds[0] = CRGB::Pink;
   }
 }
 void ledMethod(bool param) {
   unsigned long currentMillisB = millis();
-  countLed++;
-  if ((param == 1 )&&(currentMillisB - previousMillisB >= OnTimeB)) {
+  if ((param == 1 ) && (currentMillisB - previousMillisB >= OnTimeB)) {
     FastLED.show();
     leds[1] = CHSV(random8(255), 255, 255);
     leds[2] = CHSV(random8(255), 255, 255);
-  } else if ((param == 0)&&(currentMillisB - previousMillisB >= OffTimeB)) {
+  } else if ((param == 0) && (currentMillisB - previousMillisB >= OffTimeB)) {
     FastLED.show();
     leds[1] = CRGB::Blue;
     leds[2] = CRGB::Blue;
