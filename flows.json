@@ -1,15 +1,245 @@
 [
     {
-        "id": "df661b12.b46a08",
+        "id": "a71b0371.0da58",
         "type": "tab",
         "label": "Flow 2",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "bd1fd1da.7471",
+        "id": "8885313c.9925f",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "f1a0f8ea.9b5c98",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TestESP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "674b081b.144098",
+        "type": "ui_group",
+        "z": "",
+        "name": "testESP",
+        "tab": "f1a0f8ea.9b5c98",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5ae617cf.5c0b78",
+        "type": "ui_group",
+        "z": "",
+        "name": "ledresistorOSC",
+        "tab": "f1a0f8ea.9b5c98",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "39bd368f.f405ba",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "c45f302f.b5ceb",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/test",
+        "wholemsg": "true"
+    },
+    {
+        "id": "b247b056.8e5f8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Gyroscope",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e532fb13.2e5008",
+        "type": "ui_group",
+        "z": "",
+        "name": "Gyroscope",
+        "tab": "b247b056.8e5f8",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f498e4c3.4e4858",
+        "type": "ui_group",
+        "z": "",
+        "name": "testESP",
+        "tab": "e05a817d.4047c",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e05a817d.4047c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TestESP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9faf54b2.90fa68",
+        "type": "ui_group",
+        "z": "",
+        "name": "testESP",
+        "tab": "a59415ff.7d1158",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a59415ff.7d1158",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TestESP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e83ad381.b8a14",
+        "type": "ui_group",
+        "z": "",
+        "name": "testESP",
+        "tab": "afb85b91.366a68",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "afb85b91.366a68",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TestESP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c87d2120.3698a",
         "type": "osc",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "OSCESP2",
         "path": "/Yorgos",
         "metadata": false,
@@ -17,16 +247,16 @@
         "y": 60,
         "wires": [
             [
-                "1e38735c.24984d",
-                "57745ef7.9e636",
-                "256446d9.2b3b3a"
+                "b19fa57f.030868",
+                "4fe3c24c.07ac2c",
+                "2ea9b5a2.7cb1ba"
             ]
         ]
     },
     {
-        "id": "947780cc.72502",
+        "id": "ec60e117.5eefb",
         "type": "udp in",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "ESP32",
         "iface": "",
         "port": "13000",
@@ -38,20 +268,20 @@
         "y": 100,
         "wires": [
             [
-                "bd1fd1da.7471",
-                "3f7041c5.b34e8e",
-                "1e0447cf.ad7858",
-                "2192af39.c311b",
-                "3d350807.a85cb8"
+                "c87d2120.3698a",
+                "fea18837.089248",
+                "1dd02b1c.9a3d65",
+                "9fda9ccc.a3a16",
+                "37714aad.3eaa86"
             ]
         ]
     },
     {
-        "id": "81af92b5.e4b8e",
+        "id": "d51263e2.4a515",
         "type": "ui_gauge",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
-        "group": "5572f23d.877dfc",
+        "group": "e83ad381.b8a14",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -73,11 +303,11 @@
         "wires": []
     },
     {
-        "id": "3236d050.ab5b2",
+        "id": "dbd795c5.6e3fd8",
         "type": "ui_gauge",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
-        "group": "5572f23d.877dfc",
+        "group": "e83ad381.b8a14",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -99,9 +329,9 @@
         "wires": []
     },
     {
-        "id": "1e38735c.24984d",
+        "id": "b19fa57f.030868",
         "type": "html",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "property": "payload[0]",
         "outproperty": "payload[0]",
@@ -112,14 +342,14 @@
         "y": 120,
         "wires": [
             [
-                "81af92b5.e4b8e"
+                "d51263e2.4a515"
             ]
         ]
     },
     {
-        "id": "57745ef7.9e636",
+        "id": "4fe3c24c.07ac2c",
         "type": "html",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "property": "payload[1]",
         "outproperty": "payload[1]",
@@ -130,14 +360,14 @@
         "y": 160,
         "wires": [
             [
-                "3236d050.ab5b2"
+                "dbd795c5.6e3fd8"
             ]
         ]
     },
     {
-        "id": "256446d9.2b3b3a",
+        "id": "2ea9b5a2.7cb1ba",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -149,9 +379,9 @@
         "wires": []
     },
     {
-        "id": "3f7041c5.b34e8e",
+        "id": "37714aad.3eaa86",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "addr": "192.168.144.101",
         "iface": "",
@@ -165,9 +395,9 @@
         "wires": []
     },
     {
-        "id": "3b6dcc1d.cfb6d4",
+        "id": "e2e081f6.8e03b",
         "type": "udp in",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "Yorgos computer",
         "iface": "",
         "port": "10000",
@@ -179,19 +409,19 @@
         "y": 560,
         "wires": [
             [
-                "4707f862.bc48e8",
-                "7522f7ac.550188",
-                "8366387e.b77d58",
-                "f0e40b96.6b0c38"
+                "ab0564fd.7e8538",
+                "85af81c1.ab16d",
+                "35fc0bf.a12b1f4",
+                "26372ee0.7fa6e2"
             ]
         ]
     },
     {
-        "id": "4707f862.bc48e8",
+        "id": "ab0564fd.7e8538",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -202,9 +432,9 @@
         "wires": []
     },
     {
-        "id": "f0e40b96.6b0c38",
+        "id": "26372ee0.7fa6e2",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "addr": "192.168.144.104",
         "iface": "",
@@ -218,9 +448,9 @@
         "wires": []
     },
     {
-        "id": "426e4d2c.7d21a4",
+        "id": "54fe2fb4.4347d",
         "type": "udp in",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "ESP8266",
         "iface": "",
         "port": "14000",
@@ -232,16 +462,16 @@
         "y": 300,
         "wires": [
             [
-                "b9582913.a16d98",
-                "8a5d383f.451fd8",
-                "21183940.0a90a6"
+                "325d7681.f63fba",
+                "608de2af.74ec4c",
+                "b94c7e43.9661d"
             ]
         ]
     },
     {
-        "id": "b9582913.a16d98",
+        "id": "325d7681.f63fba",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "addr": "192.168.144.101",
         "iface": "",
@@ -255,9 +485,9 @@
         "wires": []
     },
     {
-        "id": "38eb6992.8fbcf6",
+        "id": "5ba32c7.2cf71d4",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -269,9 +499,9 @@
         "wires": []
     },
     {
-        "id": "8a5d383f.451fd8",
+        "id": "608de2af.74ec4c",
         "type": "osc",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "path": "",
         "metadata": false,
@@ -279,14 +509,14 @@
         "y": 380,
         "wires": [
             [
-                "38eb6992.8fbcf6"
+                "5ba32c7.2cf71d4"
             ]
         ]
     },
     {
-        "id": "7522f7ac.550188",
+        "id": "85af81c1.ab16d",
         "type": "osc",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "path": "/Flicker",
         "metadata": false,
@@ -294,14 +524,14 @@
         "y": 680,
         "wires": [
             [
-                "15238c1b.ce4b04"
+                "6ec8ec2c.1ee7d4"
             ]
         ]
     },
     {
-        "id": "1e0447cf.ad7858",
+        "id": "fea18837.089248",
         "type": "osc",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "OSCESP2",
         "path": "/Yorgos",
         "metadata": false,
@@ -309,14 +539,14 @@
         "y": 180,
         "wires": [
             [
-                "6c4f62c2.71c9cc"
+                "f8167cd1.068b4"
             ]
         ]
     },
     {
-        "id": "15238c1b.ce4b04",
+        "id": "6ec8ec2c.1ee7d4",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -328,9 +558,9 @@
         "wires": []
     },
     {
-        "id": "6c4f62c2.71c9cc",
+        "id": "f8167cd1.068b4",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -342,9 +572,9 @@
         "wires": []
     },
     {
-        "id": "d870ff95.466f4",
+        "id": "8e9bf630.fbbf38",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "From ESP32",
         "info": "",
         "x": 130,
@@ -352,9 +582,9 @@
         "wires": []
     },
     {
-        "id": "e241db27.155d68",
+        "id": "cab85378.a10da",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to Yorgos computer",
         "info": "",
         "x": 970,
@@ -362,9 +592,9 @@
         "wires": []
     },
     {
-        "id": "ddf77539.9dfe38",
+        "id": "41cd881.7aa2f78",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to ESP8266",
         "info": "",
         "x": 830,
@@ -372,9 +602,9 @@
         "wires": []
     },
     {
-        "id": "b7e01045.962a2",
+        "id": "f4dbe075.093dd",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "from ESP8266",
         "info": "",
         "x": 120,
@@ -382,9 +612,9 @@
         "wires": []
     },
     {
-        "id": "6a517c59.50c5e4",
+        "id": "fa2cc547.4f8658",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to Yorgos computer",
         "info": "",
         "x": 550,
@@ -392,9 +622,9 @@
         "wires": []
     },
     {
-        "id": "64d5226b.79e84c",
+        "id": "d1d1e512.829d18",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "from Yorgos computer",
         "info": "",
         "x": 200,
@@ -402,9 +632,9 @@
         "wires": []
     },
     {
-        "id": "57775a3b.033cb4",
+        "id": "41dd80d4.ff8d1",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to Processing",
         "addr": "",
         "iface": "",
@@ -418,9 +648,9 @@
         "wires": []
     },
     {
-        "id": "2192af39.c311b",
+        "id": "1dd02b1c.9a3d65",
         "type": "debug",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -433,11 +663,11 @@
         "wires": []
     },
     {
-        "id": "8366387e.b77d58",
+        "id": "35fc0bf.a12b1f4",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
-        "addr": "192.168.144.103",
+        "addr": "192.168.144.102",
         "iface": "",
         "port": "10000",
         "ipv": "udp4",
@@ -449,9 +679,9 @@
         "wires": []
     },
     {
-        "id": "44ebd91a.f21348",
+        "id": "feca27c0.8cbc18",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to ESP32",
         "info": "",
         "x": 960,
@@ -459,9 +689,9 @@
         "wires": []
     },
     {
-        "id": "fac2b65c.5b4308",
+        "id": "73179f6.428f76",
         "type": "comment",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "to my Computer",
         "info": "",
         "x": 980,
@@ -469,9 +699,9 @@
         "wires": []
     },
     {
-        "id": "3d350807.a85cb8",
+        "id": "9fda9ccc.a3a16",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "addr": "192.168.144.100",
         "iface": "",
@@ -485,9 +715,9 @@
         "wires": []
     },
     {
-        "id": "21183940.0a90a6",
+        "id": "b94c7e43.9661d",
         "type": "udp out",
-        "z": "df661b12.b46a08",
+        "z": "a71b0371.0da58",
         "name": "",
         "addr": "192.168.144.100",
         "iface": "",
@@ -499,24 +729,5 @@
         "x": 1020,
         "y": 500,
         "wires": []
-    },
-    {
-        "id": "5572f23d.877dfc",
-        "type": "ui_group",
-        "z": "",
-        "name": "testESP",
-        "tab": "575c389.f655ec8",
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "575c389.f655ec8",
-        "type": "ui_tab",
-        "z": "",
-        "name": "TestESP",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
     }
 ]
