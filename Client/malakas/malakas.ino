@@ -133,10 +133,11 @@ void loop() {
   msg.add(Gy);
   msg.add(Gz);
   //add sensors msg:
-//  msg.add(sensorA);
-//  msg.add(sensorB);
-//  msg.add(sensorC);
-//  msg.add(sensorD);
+  msg.add(sensorA);
+  msg.add(sensorB);
+  msg.add(sensorC);
+  msg.add(sensorD);
+  msg.add(lightSensor);
   msg.send(UDP);
   UDP.endPacket();
   msg.empty();
