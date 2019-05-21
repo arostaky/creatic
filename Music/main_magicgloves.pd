@@ -72,6 +72,11 @@
 #X obj 250 433 s glide;
 #X floatatom 332 384 5 0 0 0 - - -;
 #X obj 357 427 s decay;
+#X obj 658 27 udpreceive 14000;
+#X obj 692 73 unpackOSC;
+#X obj 685 114 pipelist;
+#X obj 683 157 routeOSC /Yorgos;
+#X obj 694 213 print testYorgos;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
@@ -86,3 +91,7 @@
 #X connect 15 0 13 0;
 #X connect 16 0 18 0;
 #X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
