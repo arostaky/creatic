@@ -41,7 +41,8 @@
                 "bd1fd1da.7471",
                 "3f7041c5.b34e8e",
                 "1e0447cf.ad7858",
-                "2192af39.c311b"
+                "2192af39.c311b",
+                "3d350807.a85cb8"
             ]
         ]
     },
@@ -190,7 +191,7 @@
         "type": "debug",
         "z": "df661b12.b46a08",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -232,7 +233,8 @@
         "wires": [
             [
                 "b9582913.a16d98",
-                "8a5d383f.451fd8"
+                "8a5d383f.451fd8",
+                "21183940.0a90a6"
             ]
         ]
     },
@@ -454,6 +456,48 @@
         "info": "",
         "x": 960,
         "y": 720,
+        "wires": []
+    },
+    {
+        "id": "fac2b65c.5b4308",
+        "type": "comment",
+        "z": "df661b12.b46a08",
+        "name": "to my Computer",
+        "info": "",
+        "x": 980,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3d350807.a85cb8",
+        "type": "udp out",
+        "z": "df661b12.b46a08",
+        "name": "",
+        "addr": "192.168.144.100",
+        "iface": "",
+        "port": "14000",
+        "ipv": "udp4",
+        "outport": "12000",
+        "base64": false,
+        "multicast": "false",
+        "x": 1020,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "21183940.0a90a6",
+        "type": "udp out",
+        "z": "df661b12.b46a08",
+        "name": "",
+        "addr": "192.168.144.100",
+        "iface": "",
+        "port": "14000",
+        "ipv": "udp4",
+        "outport": "12000",
+        "base64": false,
+        "multicast": "false",
+        "x": 1020,
+        "y": 500,
         "wires": []
     },
     {
