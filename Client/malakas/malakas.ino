@@ -1,3 +1,7 @@
+//fastLed lib:
+#define FASTLED_ESP32_I2S
+#include <FastLED.h>
+
 #include <Wire.h>
 #include <WiFi.h>
 #include <WiFiUdp.h>
@@ -60,7 +64,15 @@ const long interval = 1000;
 unsigned long countMotor = 0;
 long OnTime = 20;           // milliseconds of on-time
 long OffTime = 50;          // milliseconds of off-time
+// How many leds in your strip?
+#define NUM_LEDS 2
+#define LED_PIN 2
+
+// Define the array of leds
+CRGB leds[NUM_LEDS];
+
 void setup() {
+  FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
   Serial.begin(9600);
   Wire.begin(sda, scl);
   MPU6050_Init();
@@ -95,6 +107,7 @@ void setup() {
 }
 
 void loop() {
+  ledMethod();
   double Ax, Ay, Az, T, Gx, Gy, Gz;
 
   Read_RawValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
@@ -108,13 +121,13 @@ void loop() {
   Gy = (double)GyroY / GyroScaleFactor;
   Gz = (double)GyroZ / GyroScaleFactor;
   //
-    Serial.print("Ax: "); Serial.print(Ax);
-    Serial.print(" Ay: "); Serial.print(Ay);
-    Serial.print(" Az: "); Serial.print(Az);
-    Serial.print(" T: "); Serial.print(T);
-    Serial.print(" Gx: "); Serial.print(Gx);
-    Serial.print(" Gy: "); Serial.print(Gy);
-    Serial.print(" Gz: "); Serial.println(Gz);
+  Serial.print("Ax: "); Serial.print(Ax);
+  Serial.print(" Ay: "); Serial.print(Ay);
+  Serial.print(" Az: "); Serial.print(Az);
+  Serial.print(" T: "); Serial.print(T);
+  Serial.print(" Gx: "); Serial.print(Gx);
+  Serial.print(" Gy: "); Serial.print(Gy);
+  Serial.print(" Gz: "); Serial.println(Gz);
   // sensor read:
   sensorRead();
   // light sensor:
@@ -240,8 +253,6 @@ void motorVibrator() {
     previousMillis = currentMillis;   // Remember the time
     digitalWrite(motorPin, motorState);   // Update the actual motor
   }
-  //Serial.println("count: ");
-  //Serial.println(countMotor);
   if (countMotor == 4) {
     // OnTime = 0;
     OffTime = 1100;
@@ -251,14 +262,28 @@ void motorVibrator() {
     OffTime = 20;
     countMotor = 0;
   }
-  //  Serial.println("count Motor: ");
-  //  Serial.println(countMotor);
-  //  digitalWrite(motorPin, HIGH);
-  //  delay(200);
-  //  digitalWrite(motorPin, LOW);
-  //  delay(200);
-  //  digitalWrite(motorPin, HIGH);
-  //  delay(200);
-  //  digitalWrite(motorPin, LOW);
-  //  delay(500);
+}
+void ledMethod() {
+  FastLED.show();
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CHSV(random8(255), 255, 255);
+  leds[1] = CHSV(random8(255), 255, 255);
+  FastLED.delay(33);
+  leds[0] = CRGB::Blue;
+  leds[1] = CRGB::Blue;
+  FastLED.delay(1000);
 }
