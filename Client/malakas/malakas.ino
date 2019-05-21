@@ -65,12 +65,11 @@ int motorState = LOW;             // motorState used to set the motor
 // The value will quickly become too large for an int to store
 unsigned long previousMillis = 0;        // will store last time motor was updated
 // constants won't change:
-const long interval = 1000;
 unsigned long countMotor = 0;
-long OnTime = 20;           // milliseconds of on-time
-long OffTime = 50;          // milliseconds of off-time
+long OnTime = 100;           // milliseconds of on-time
+long OffTime = 400;          // milliseconds of off-time
 // How many leds in your strip?
-#define NUM_LEDS 2
+#define NUM_LEDS 3
 #define LED_PIN 2
 unsigned long countLed = 0;
 unsigned long previousMillisB = 0;
@@ -81,7 +80,7 @@ CRGB leds[NUM_LEDS];
 //OSC get:
 OSCErrorCode error;
 #define MSG_HEADER   "/Flicker"
-int ReadFlickering = 1;
+int ReadFlickering = 0;
 void setup() {
   FastLED.addLeds<NEOPIXEL, LED_PIN>(leds, NUM_LEDS);
   Serial.begin(9600);
@@ -279,34 +278,37 @@ void motorVibrator() {
     motorState = LOW;  // Turn it off
     previousMillis = currentMillis;  // Remember the time
     digitalWrite(motorPin, motorState);  // Update the actual motor
+    leds[0] = CRGB::Black;
   }
   else if ((motorState == LOW) && (currentMillis - previousMillis >= OffTime))
   {
     motorState = HIGH;  // turn it on
     previousMillis = currentMillis;   // Remember the time
     digitalWrite(motorPin, motorState);   // Update the actual motor
+     FastLED.show();
+     leds[0] = CRGB::Blue;
   }
   if (countMotor == 4) {
     // OnTime = 0;
-    OffTime = 1100;
+    OffTime = 110;
   }
   if (countMotor == 5) {
     //OnTime = 20;
-    OffTime = 20;
+    OffTime = 500;
     countMotor = 0;
   }
 }
 void ledMethod(bool param) {
   unsigned long currentMillisB = millis();
   countLed++;
-  if ((param == 0 )&&(currentMillisB - previousMillisB >= OnTimeB)) {
+  if ((param == 1 )&&(currentMillisB - previousMillisB >= OnTimeB)) {
     FastLED.show();
-    leds[0] = CHSV(random8(255), 255, 255);
     leds[1] = CHSV(random8(255), 255, 255);
-  } else if ((param == 1)&&(currentMillisB - previousMillisB >= OffTimeB)) {
+    leds[2] = CHSV(random8(255), 255, 255);
+  } else if ((param == 0)&&(currentMillisB - previousMillisB >= OffTimeB)) {
     FastLED.show();
-    leds[0] = CRGB::Blue;
     leds[1] = CRGB::Blue;
+    leds[2] = CRGB::Blue;
   }
 }
 //OSC CALLBACK
