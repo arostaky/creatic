@@ -51,10 +51,10 @@ int lightSensor;
 // create global variables for motor and delay function without delay() global from arduino
 int motorPin = 15;
 // Variables will hange:
-int motorState = LOW;             // ledState used to set the LED
+int motorState = LOW;             // motorState used to set the motor
 // Generally, you should use "unsigned long" for variables that hold time
 // The value will quickly become too large for an int to store
-unsigned long previousMillis = 0;        // will store last time LED was updated
+unsigned long previousMillis = 0;        // will store last time motor was updated
 // constants won't change:
 const long interval = 1000;
 unsigned long countMotor = 0;
