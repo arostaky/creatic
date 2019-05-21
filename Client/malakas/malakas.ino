@@ -12,6 +12,11 @@
 #define STASSID "TPCast_AP2G"
 #define STAPSK  "12345678"
 #endif
+// Set your Static IP address
+IPAddress local_IP(192, 168, 144, 102);
+// Set your Gateway IP address
+IPAddress gateway(192, 168, 144, 1);
+IPAddress subnet(255, 255, 0, 0);
 
 WiFiUDP UDP;
 
@@ -92,6 +97,10 @@ void setup() {
   /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
      would try to act as both a client and an access-point and could cause
      network-issues with your other WiFi-devices on your WiFi-network. */
+      // Configures static IP address
+  if (!WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("STA Failed to configure");
+  }
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
 
