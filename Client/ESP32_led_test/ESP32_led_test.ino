@@ -1,4 +1,4 @@
-int motorPin = 15;
+int motorPin = 4;
  
 void setup() {
  
