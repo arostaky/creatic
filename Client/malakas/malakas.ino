@@ -66,8 +66,8 @@ int motorState = LOW;             // motorState used to set the motor
 unsigned long previousMillis = 0;        // will store last time motor was updated
 // constants won't change:
 unsigned long countMotor = 0;
-long OnTime = 100;           // milliseconds of on-time
-long OffTime = 400;          // milliseconds of off-time
+long OnTime = 200;           // milliseconds of on-time
+long OffTime = 700;          // milliseconds of off-time
 // How many leds in your strip?
 #define NUM_LEDS 3
 #define LED_PIN 2
@@ -278,7 +278,7 @@ void motorVibrator() {
     motorState = LOW;  // Turn it off
     previousMillis = currentMillis;  // Remember the time
     digitalWrite(motorPin, motorState);  // Update the actual motor
-    leds[0] = CRGB::Black;
+    leds[0] = CRGB::Red;
   }
   else if ((motorState == LOW) && (currentMillis - previousMillis >= OffTime))
   {
@@ -290,11 +290,11 @@ void motorVibrator() {
   }
   if (countMotor == 4) {
     // OnTime = 0;
-    OffTime = 110;
+    OffTime = 120;
   }
   if (countMotor == 5) {
     //OnTime = 20;
-    OffTime = 500;
+    OffTime = 450;
     countMotor = 0;
   }
 }
