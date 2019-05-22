@@ -1,6 +1,6 @@
 #include <Adafruit_NeoPixel.h>
  
-#define PIN 15
+#define PIN 2
  
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
 // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
@@ -8,7 +8,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(1, PIN, NEO_GRB + NEO_KHZ800);
  
 void setup()
 {
-  pinMode(15, OUTPUT);
+  pinMode(2, OUTPUT);
 pixels.begin(); // This initializes the NeoPixel library.
 }
  

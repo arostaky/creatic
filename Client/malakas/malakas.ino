@@ -68,10 +68,17 @@ unsigned long countLed = 0;
 unsigned long previousMillisB = 0;
 long OnTimeB = 33;           // milliseconds of on-time
 long OffTimeB = 1000;          // milliseconds of off-time
+// Some delay values to change flashing behavior
+unsigned long switchDelay = 250;
+unsigned long strobeDelay = 50;
+// Seed the initial wait for the strobe effect
+unsigned long strobeWait = strobeDelay;
+// Variable to see when we should swtich LEDs
+unsigned long waitUntilSwitch = switchDelay;  // seed initial wait
 int ledState = 0;
 // Define the array of leds
-//CRGB leds[NUM_LEDS];
-CRGBArray<NUM_LEDS> leds;
+CRGB leds[NUM_LEDS];
+//CRGBArray<NUM_LEDS> leds;
 //OSC get:
 OSCErrorCode error;
 #define MSG_HEADER   "/Flicker"
@@ -114,10 +121,13 @@ void setup() {
   pinMode(motorPin, OUTPUT);
   pinMode(27, INPUT);
   motorVibrator();
+  //ledHeart();
 }
 
 void loop() {
   ledMethod(ReadFlickering);
+  ledHeart();
+  //ledHeart(ledState);
   double Ax, Ay, Az, T, Gx, Gy, Gz;
 
   Read_RawValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
@@ -145,7 +155,6 @@ void loop() {
   //Send OSC Message
   // motorVibration:
   //  motorVibrator();
-  ledHeart(ledState);
   //OSC Handle
   OSCMessage msgIn;
   int size = UDP.parsePacket();
@@ -269,21 +278,51 @@ void lightSensorRead() {
 void setPin(int state) {
   digitalWrite(motorPin, state);
   ledState = state;
+  //  if (state == 0) {
+  //    FastLED.show();
+  //    leds[0] = CRGB::White;
+  //    //leds[0] = CHSV(random8(255), 255, 255);
+  //  } else {
+  //    FastLED.show();
+  //    leds[0] = CRGB::Black;
+  //  }
 }
 void motorVibrator() {
-//  tickerSetLow.attach_ms(200, setPin, 1); 
-//  tickerSetLow.attach_ms(100, setPin, 0);
-//  tickerSetLow.attach_ms(200, setPin, 1);
-//  tickerSetHigh.attach_ms(300, setPin, 0);
+  tickerSetLow.attach_ms(200, setPin, 1);
+  tickerSetLow.attach_ms(100, setPin, 0);
+  tickerSetLow.attach_ms(200, setPin, 1);
+  tickerSetHigh.attach_ms(300, setPin, 0);
 }
-void ledHeart(int param) {
-  if (param == 1) {
+void ledHeart() {
+  //   //unsigned long currentMillisC = millis();
+  //  if (ledState == 1 ) {
+  //    FastLED.show();
+  //    leds[0] = CRGB::White;
+  //   // previousMillisC = currentMillisC;  // Remember the time
+  //  } else if (ledState == 0) {
+  //    FastLED.show();
+  //    leds[0] = CRGB::Black;
+  //   // previousMillisC = currentMillisC;  // Remember the time
+  //  }
+  // Toggle back and forth between the two LEDs
+  if ((long)(millis() - waitUntilSwitch) >= 0) {
+    // time is up!
     FastLED.show();
     leds[0] = CRGB::White;
-    //leds[0] = CHSV(random8(255), 255, 255);
-  } else if (param == 0) {
+    //Blue_State = LOW;
+    //whichLED = !whichLED;  // toggle LED to strobe
+    waitUntilSwitch += switchDelay;
+  }
+
+  // Create the stobing effect
+  if ((long)(millis() - strobeWait) >= 0) {
+    //    if (whichLED == RED)
+    //      Red_State = !Red_State;
+    //    if (whichLED == BLUE)
+    //      Blue_State = !Blue_State;
     FastLED.show();
-    leds[0] = CRGB::Pink;
+    leds[0] = CRGB::Red;
+    strobeWait += strobeDelay;
   }
 }
 void ledMethod(bool param) {
@@ -294,7 +333,7 @@ void ledMethod(bool param) {
     leds[2] = CHSV(random8(255), 255, 255);
   } else if ((param == 0) && (currentMillisB - previousMillisB >= OffTimeB)) {
     FastLED.show();
-    leds[1] = CRGB::Blue;
+    leds[1] = CRGB::Pink;
     leds[2] = CRGB::Blue;
   }
 }
