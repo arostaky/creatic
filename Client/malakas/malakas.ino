@@ -55,8 +55,8 @@ const uint8_t MPU6050_REGISTER_ACCEL_XOUT_H =  0x3B;
 const uint8_t MPU6050_REGISTER_SIGNAL_PATH_RESET  = 0x68;
 
 int16_t AccelX, AccelY, AccelZ, Temperature, GyroX, GyroY, GyroZ;
-int sensorA, sensorB, sensorC, sensorD;
-int lightSensor;
+float sensorA, sensorB, sensorC, sensorD;
+float lightSensor;
 // create global variables for motor
 int motorPin = 15;
 Ticker tickerSetHigh;
@@ -174,23 +174,15 @@ void loop() {
   }
   OSCBundle bndl;
   UDP.beginPacket(outIp, outPort);
-  OSCMessage msg("/Yorgos");
-  msg.add(Ax);
-  msg.add(Ay);
-  msg.add(Az);
-  msg.add(T);
-  msg.add(Gx);
-  msg.add(Gy);
-  msg.add(Gz);
-//  add sensors msg:
-  msg.add(sensorA);
-  msg.add(sensorB);
-  msg.add(sensorC);
-  msg.add(sensorD);
-  msg.add(lightSensor);
-  msg.send(UDP);
+  //OSCMessage msg("/Acc");
+  //msg.add(T);
+  bndl.add("/Acc").add(Ax).add(Ay).add(Az);
+  bndl.add("/Gyros").add(Gx).add(Gy).add(Gz);
+  //  add sensors msg:
+  bndl.add("/Sensor").add(lightSensor).add(sensorA).add(sensorB).add(sensorC).add(sensorD);
+  bndl.send(UDP);
   UDP.endPacket();
-  msg.empty();
+  bndl.empty();
   delay(10);
 }
 
