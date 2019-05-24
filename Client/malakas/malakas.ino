@@ -128,7 +128,7 @@ void loop() {
   ledMethod(ReadFlickering);
   ledHeart();
   //ledHeart(ledState);
-  double Ax, Ay, Az, T, Gx, Gy, Gz;
+  float Ax, Ay, Az, T, Gx, Gy, Gz;
 
   Read_RawValue(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
 
@@ -182,7 +182,7 @@ void loop() {
   msg.add(Gx);
   msg.add(Gy);
   msg.add(Gz);
-  //add sensors msg:
+//  add sensors msg:
   msg.add(sensorA);
   msg.add(sensorB);
   msg.add(sensorC);
