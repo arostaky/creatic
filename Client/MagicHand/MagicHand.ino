@@ -15,7 +15,11 @@
 //Wifi connection Adress
 const char *ssid = "TPCast_AP2G";
 const char *password = "12345678";
-
+// Set your Static IP address
+IPAddress local_IP(192, 168, 144, 103);
+// Set your Gateway IP address
+IPAddress gateway(192, 168, 144, 1);
+IPAddress subnet(255, 255, 0, 0);
 WiFiUDP UDP;
 const IPAddress outIp(192,168,144,100);        // remote IP (not needed for receive)
 const unsigned int outPort = 14000;          // remote port (not needed for receive)
@@ -30,6 +34,14 @@ void setup() {
   Serial.begin(115200);
 
   //WIFI Init
+  
+  /* Explicitly set the ESP8266 to be a WiFi-client, otherwise, it by default,
+     would try to act as both a client and an access-point and could cause
+     network-issues with your other WiFi-devices on your WiFi-network. */
+  // Configures static IP address
+  if (!WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("STA Failed to configure");
+  }
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
 
