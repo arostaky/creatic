@@ -1,35 +1,23 @@
 [
     {
-        "id": "a71b0371.0da58",
+        "id": "8a1c296d.6e9228",
         "type": "tab",
         "label": "Flow 2",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "8885313c.9925f",
-        "type": "mqtt-broker",
+        "id": "5572f23d.877dfc",
+        "type": "ui_group",
         "z": "",
-        "name": "",
-        "broker": "localhost",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
+        "name": "testESP",
+        "tab": "575c389.f655ec8",
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
-        "id": "f1a0f8ea.9b5c98",
+        "id": "575c389.f655ec8",
         "type": "ui_tab",
         "z": "",
         "name": "TestESP",
@@ -38,27 +26,36 @@
         "hidden": false
     },
     {
-        "id": "674b081b.144098",
+        "id": "37fa605e.c724a",
+        "type": "ui_tab",
+        "z": "",
+        "name": "TestESP",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "eb42609f.57eef",
         "type": "ui_group",
         "z": "",
         "name": "testESP",
-        "tab": "f1a0f8ea.9b5c98",
+        "tab": "37fa605e.c724a",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "5ae617cf.5c0b78",
+        "id": "98d95c89.298af",
         "type": "ui_group",
         "z": "",
         "name": "ledresistorOSC",
-        "tab": "f1a0f8ea.9b5c98",
+        "tab": "37fa605e.c724a",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "39bd368f.f405ba",
+        "id": "82c6fbe3.393538",
         "type": "ui_base",
         "theme": {
             "name": "theme-light",
@@ -154,14 +151,14 @@
         }
     },
     {
-        "id": "c45f302f.b5ceb",
+        "id": "3c11e84c.e07228",
         "type": "websocket-listener",
         "z": "",
         "path": "/ws/test",
         "wholemsg": "true"
     },
     {
-        "id": "b247b056.8e5f8",
+        "id": "147f3f56.3c67f1",
         "type": "ui_tab",
         "z": "",
         "name": "Gyroscope",
@@ -170,27 +167,27 @@
         "hidden": false
     },
     {
-        "id": "e532fb13.2e5008",
+        "id": "e5cfdf9b.5c698",
         "type": "ui_group",
         "z": "",
         "name": "Gyroscope",
-        "tab": "b247b056.8e5f8",
+        "tab": "147f3f56.3c67f1",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "f498e4c3.4e4858",
+        "id": "6da70738.c19718",
         "type": "ui_group",
         "z": "",
         "name": "testESP",
-        "tab": "e05a817d.4047c",
+        "tab": "e7261cde.b5da8",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "e05a817d.4047c",
+        "id": "e7261cde.b5da8",
         "type": "ui_tab",
         "z": "",
         "name": "TestESP",
@@ -199,17 +196,17 @@
         "hidden": false
     },
     {
-        "id": "9faf54b2.90fa68",
+        "id": "50f6e5b5.9e7f6c",
         "type": "ui_group",
         "z": "",
         "name": "testESP",
-        "tab": "a59415ff.7d1158",
+        "tab": "d8b7a0de.f54cf",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "a59415ff.7d1158",
+        "id": "d8b7a0de.f54cf",
         "type": "ui_tab",
         "z": "",
         "name": "TestESP",
@@ -218,17 +215,17 @@
         "hidden": false
     },
     {
-        "id": "e83ad381.b8a14",
+        "id": "1b9ad328.9c09dd",
         "type": "ui_group",
         "z": "",
         "name": "testESP",
-        "tab": "afb85b91.366a68",
+        "tab": "eeecc25b.94b3a",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "afb85b91.366a68",
+        "id": "eeecc25b.94b3a",
         "type": "ui_tab",
         "z": "",
         "name": "TestESP",
@@ -237,26 +234,24 @@
         "hidden": false
     },
     {
-        "id": "c87d2120.3698a",
+        "id": "b2667da3.7d1b2",
         "type": "osc",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "OSCESP2",
-        "path": "/Yorgos",
+        "path": "/Acc",
         "metadata": false,
-        "x": 490,
-        "y": 60,
+        "x": 550,
+        "y": 100,
         "wires": [
             [
-                "b19fa57f.030868",
-                "4fe3c24c.07ac2c",
-                "2ea9b5a2.7cb1ba"
+                "ff02fa08.dfab88"
             ]
         ]
     },
     {
-        "id": "ec60e117.5eefb",
+        "id": "3533f615.5c81aa",
         "type": "udp in",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "ESP32",
         "iface": "",
         "port": "13000",
@@ -268,126 +263,36 @@
         "y": 100,
         "wires": [
             [
-                "c87d2120.3698a",
-                "fea18837.089248",
-                "1dd02b1c.9a3d65",
-                "9fda9ccc.a3a16",
-                "37714aad.3eaa86"
+                "b2667da3.7d1b2",
+                "c1122082.4d526",
+                "47f70277.be86ec"
             ]
         ]
     },
     {
-        "id": "d51263e2.4a515",
-        "type": "ui_gauge",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "group": "e83ad381.b8a14",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Ax",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1170,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "dbd795c5.6e3fd8",
-        "type": "ui_gauge",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "group": "e83ad381.b8a14",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Az",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "3",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 1170,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "b19fa57f.030868",
-        "type": "html",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "property": "payload[0]",
-        "outproperty": "payload[0]",
-        "tag": "",
-        "ret": "attr",
-        "as": "single",
-        "x": 1050,
-        "y": 120,
-        "wires": [
-            [
-                "d51263e2.4a515"
-            ]
-        ]
-    },
-    {
-        "id": "4fe3c24c.07ac2c",
-        "type": "html",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "property": "payload[1]",
-        "outproperty": "payload[1]",
-        "tag": "",
-        "ret": "attr",
-        "as": "single",
-        "x": 1050,
-        "y": 160,
-        "wires": [
-            [
-                "dbd795c5.6e3fd8"
-            ]
-        ]
-    },
-    {
-        "id": "2ea9b5a2.7cb1ba",
+        "id": "ff02fa08.dfab88",
         "type": "debug",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 1090,
-        "y": 80,
+        "x": 950,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "37714aad.3eaa86",
+        "id": "47f70277.be86ec",
         "type": "udp out",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "addr": "192.168.144.101",
         "iface": "",
-        "port": "12000",
+        "port": "13000",
         "ipv": "udp4",
-        "outport": "12000",
+        "outport": "13000",
         "base64": false,
         "multicast": "false",
         "x": 1000,
@@ -395,9 +300,9 @@
         "wires": []
     },
     {
-        "id": "e2e081f6.8e03b",
+        "id": "d53fe8db.bf59a8",
         "type": "udp in",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "Yorgos computer",
         "iface": "",
         "port": "10000",
@@ -405,21 +310,21 @@
         "multicast": "false",
         "group": "",
         "datatype": "buffer",
-        "x": 200,
-        "y": 560,
+        "x": 140,
+        "y": 500,
         "wires": [
             [
-                "ab0564fd.7e8538",
-                "85af81c1.ab16d",
-                "35fc0bf.a12b1f4",
-                "26372ee0.7fa6e2"
+                "4ba913b3.77b77c",
+                "f14dc006.b466",
+                "43167b3b.4ee7a4",
+                "e12be6ff.9979a8"
             ]
         ]
     },
     {
-        "id": "ab0564fd.7e8538",
+        "id": "4ba913b3.77b77c",
         "type": "debug",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -427,30 +332,30 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 550,
-        "y": 520,
+        "x": 470,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "26372ee0.7fa6e2",
+        "id": "e12be6ff.9979a8",
         "type": "udp out",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
-        "addr": "192.168.144.104",
+        "addr": "192.168.144.103",
         "iface": "",
         "port": "10000",
         "ipv": "udp4",
         "outport": "",
         "base64": false,
         "multicast": "false",
-        "x": 800,
-        "y": 600,
+        "x": 980,
+        "y": 560,
         "wires": []
     },
     {
-        "id": "54fe2fb4.4347d",
+        "id": "b293344.4bfdac8",
         "type": "udp in",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "ESP8266",
         "iface": "",
         "port": "14000",
@@ -462,16 +367,16 @@
         "y": 300,
         "wires": [
             [
-                "325d7681.f63fba",
-                "608de2af.74ec4c",
-                "b94c7e43.9661d"
+                "19575115.d3f35f",
+                "fa2fc7d6.964318",
+                "b6d153ff.d927a"
             ]
         ]
     },
     {
-        "id": "325d7681.f63fba",
+        "id": "19575115.d3f35f",
         "type": "udp out",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "addr": "192.168.144.101",
         "iface": "",
@@ -480,14 +385,58 @@
         "outport": "12000",
         "base64": false,
         "multicast": "false",
-        "x": 400,
-        "y": 280,
+        "x": 1000,
+        "y": 320,
         "wires": []
     },
     {
-        "id": "5ba32c7.2cf71d4",
+        "id": "830a703.6b1179",
         "type": "debug",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 970,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "fa2fc7d6.964318",
+        "type": "osc",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "path": "/ConductHand",
+        "metadata": false,
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "830a703.6b1179"
+            ]
+        ]
+    },
+    {
+        "id": "f14dc006.b466",
+        "type": "osc",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "path": "/Flicker",
+        "metadata": false,
+        "x": 270,
+        "y": 640,
+        "wires": [
+            [
+                "ced601ff.4cd3e"
+            ]
+        ]
+    },
+    {
+        "id": "ced601ff.4cd3e",
+        "type": "debug",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -495,86 +444,13 @@
         "tostatus": false,
         "complete": "false",
         "x": 470,
-        "y": 420,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "608de2af.74ec4c",
-        "type": "osc",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "path": "",
-        "metadata": false,
-        "x": 320,
-        "y": 380,
-        "wires": [
-            [
-                "5ba32c7.2cf71d4"
-            ]
-        ]
-    },
-    {
-        "id": "85af81c1.ab16d",
-        "type": "osc",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "path": "/Flicker",
-        "metadata": false,
-        "x": 370,
-        "y": 680,
-        "wires": [
-            [
-                "6ec8ec2c.1ee7d4"
-            ]
-        ]
-    },
-    {
-        "id": "fea18837.089248",
-        "type": "osc",
-        "z": "a71b0371.0da58",
-        "name": "OSCESP2",
-        "path": "/Yorgos",
-        "metadata": false,
-        "x": 250,
-        "y": 180,
-        "wires": [
-            [
-                "f8167cd1.068b4"
-            ]
-        ]
-    },
-    {
-        "id": "6ec8ec2c.1ee7d4",
-        "type": "debug",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 550,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "f8167cd1.068b4",
-        "type": "debug",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 350,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "8e9bf630.fbbf38",
+        "id": "cc520ab5.27ebb8",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "From ESP32",
         "info": "",
         "x": 130,
@@ -582,9 +458,9 @@
         "wires": []
     },
     {
-        "id": "cab85378.a10da",
+        "id": "a834b3d.542735",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "to Yorgos computer",
         "info": "",
         "x": 970,
@@ -592,65 +468,49 @@
         "wires": []
     },
     {
-        "id": "41cd881.7aa2f78",
+        "id": "850a7888.31aa48",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "to ESP8266",
         "info": "",
-        "x": 830,
-        "y": 640,
+        "x": 930,
+        "y": 620,
         "wires": []
     },
     {
-        "id": "f4dbe075.093dd",
+        "id": "789fa3ee.b50fbc",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "from ESP8266",
         "info": "",
-        "x": 120,
-        "y": 380,
+        "x": 100,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "fa2cc547.4f8658",
+        "id": "5a8db34e.d5a02c",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "to Yorgos computer",
         "info": "",
-        "x": 550,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "d1d1e512.829d18",
-        "type": "comment",
-        "z": "a71b0371.0da58",
-        "name": "from Yorgos computer",
-        "info": "",
-        "x": 200,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "41dd80d4.ff8d1",
-        "type": "udp out",
-        "z": "a71b0371.0da58",
-        "name": "to Processing",
-        "addr": "",
-        "iface": "",
-        "port": "13001",
-        "ipv": "udp4",
-        "outport": "",
-        "base64": false,
-        "multicast": "false",
-        "x": 1120,
+        "x": 970,
         "y": 280,
         "wires": []
     },
     {
-        "id": "1dd02b1c.9a3d65",
+        "id": "9f59997a.f7d7e8",
+        "type": "comment",
+        "z": "8a1c296d.6e9228",
+        "name": "from Yorgos computer",
+        "info": "",
+        "x": 160,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c1122082.4d526",
         "type": "debug",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -658,14 +518,14 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 280,
+        "x": 290,
         "y": 40,
         "wires": []
     },
     {
-        "id": "35fc0bf.a12b1f4",
+        "id": "43167b3b.4ee7a4",
         "type": "udp out",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "",
         "addr": "192.168.144.102",
         "iface": "",
@@ -679,55 +539,28 @@
         "wires": []
     },
     {
-        "id": "feca27c0.8cbc18",
+        "id": "8741b20b.040f9",
         "type": "comment",
-        "z": "a71b0371.0da58",
+        "z": "8a1c296d.6e9228",
         "name": "to ESP32",
         "info": "",
-        "x": 960,
+        "x": 920,
         "y": 720,
         "wires": []
     },
     {
-        "id": "73179f6.428f76",
-        "type": "comment",
-        "z": "a71b0371.0da58",
-        "name": "to my Computer",
-        "info": "",
-        "x": 980,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "9fda9ccc.a3a16",
-        "type": "udp out",
-        "z": "a71b0371.0da58",
+        "id": "b6d153ff.d927a",
+        "type": "debug",
+        "z": "8a1c296d.6e9228",
         "name": "",
-        "addr": "192.168.144.100",
-        "iface": "",
-        "port": "14000",
-        "ipv": "udp4",
-        "outport": "12000",
-        "base64": false,
-        "multicast": "false",
-        "x": 1020,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "b94c7e43.9661d",
-        "type": "udp out",
-        "z": "a71b0371.0da58",
-        "name": "",
-        "addr": "192.168.144.100",
-        "iface": "",
-        "port": "14000",
-        "ipv": "udp4",
-        "outport": "12000",
-        "base64": false,
-        "multicast": "false",
-        "x": 1020,
-        "y": 500,
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 350,
+        "y": 260,
         "wires": []
     }
 ]
