@@ -265,7 +265,8 @@
             [
                 "b2667da3.7d1b2",
                 "c1122082.4d526",
-                "47f70277.be86ec"
+                "47f70277.be86ec",
+                "17b6fb54.be23f5"
             ]
         ]
     },
@@ -315,9 +316,11 @@
         "wires": [
             [
                 "4ba913b3.77b77c",
-                "f14dc006.b466",
                 "43167b3b.4ee7a4",
-                "e12be6ff.9979a8"
+                "e12be6ff.9979a8",
+                "9f3e3ad4.7e4508",
+                "f14dc006.b466",
+                "e88bd056.f6e0b"
             ]
         ]
     },
@@ -349,7 +352,7 @@
         "base64": false,
         "multicast": "false",
         "x": 980,
-        "y": 560,
+        "y": 660,
         "wires": []
     },
     {
@@ -369,7 +372,8 @@
             [
                 "19575115.d3f35f",
                 "fa2fc7d6.964318",
-                "b6d153ff.d927a"
+                "b6d153ff.d927a",
+                "52165d88.9c3be4"
             ]
         ]
     },
@@ -385,8 +389,8 @@
         "outport": "12000",
         "base64": false,
         "multicast": "false",
-        "x": 1000,
-        "y": 320,
+        "x": 980,
+        "y": 340,
         "wires": []
     },
     {
@@ -561,6 +565,106 @@
         "targetType": "full",
         "x": 350,
         "y": 260,
+        "wires": []
+    },
+    {
+        "id": "9f3e3ad4.7e4508",
+        "type": "osc",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "path": "/LeftVibe",
+        "metadata": false,
+        "x": 270,
+        "y": 700,
+        "wires": [
+            [
+                "ec288b90.bb6e58"
+            ]
+        ]
+    },
+    {
+        "id": "ec288b90.bb6e58",
+        "type": "debug",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 470,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "e88bd056.f6e0b",
+        "type": "osc",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "path": "/RightVibe",
+        "metadata": false,
+        "x": 290,
+        "y": 760,
+        "wires": [
+            [
+                "198e13d0.a52e1c"
+            ]
+        ]
+    },
+    {
+        "id": "198e13d0.a52e1c",
+        "type": "debug",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "52165d88.9c3be4",
+        "type": "udp out",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "addr": "192.168.144.100",
+        "iface": "",
+        "port": "11001",
+        "ipv": "udp4",
+        "outport": "11001",
+        "base64": false,
+        "multicast": "false",
+        "x": 1020,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "17b6fb54.be23f5",
+        "type": "udp out",
+        "z": "8a1c296d.6e9228",
+        "name": "",
+        "addr": "192.168.144.100",
+        "iface": "",
+        "port": "11000",
+        "ipv": "udp4",
+        "outport": "11000",
+        "base64": false,
+        "multicast": "false",
+        "x": 1020,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "60df6814.3b25f8",
+        "type": "comment",
+        "z": "8a1c296d.6e9228",
+        "name": "to my Computer",
+        "info": "",
+        "x": 980,
+        "y": 460,
         "wires": []
     }
 ]
