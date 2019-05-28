@@ -85,6 +85,9 @@ OSCErrorCode error;
 int ReadFlickering = 0;
 void setup() {
   FastLED.addLeds<WS2812B, LED_PIN, RGB>(leds, NUM_LEDS);
+  FastLED.setDither(0);
+  FastLED.setMaxPowerInVoltsAndMilliamps(5, 900);
+  FastLED.setBrightness(128);
   Serial.begin(9600);
   Wire.begin(sda, scl);
   MPU6050_Init();
@@ -269,7 +272,7 @@ void lightSensorRead() {
 }
 void setPin(int state) {
   digitalWrite(motorPin, state);
-  ledState = state;
+  //ledState = state;
   //  if (state == 0) {
   //    FastLED.show();
   //    leds[0] = CRGB::White;
@@ -280,9 +283,9 @@ void setPin(int state) {
   //  }
 }
 void motorVibrator() {
-  tickerSetLow.attach_ms(200, setPin, 1);
+  tickerSetLow.attach_ms(200, setPin, 100);
   tickerSetLow.attach_ms(100, setPin, 0);
-  tickerSetLow.attach_ms(200, setPin, 1);
+  tickerSetLow.attach_ms(200, setPin, 100);
   tickerSetHigh.attach_ms(300, setPin, 0);
 }
 void ledHeart() {
@@ -312,21 +315,31 @@ void ledHeart() {
     //      Red_State = !Red_State;
     //    if (whichLED == BLUE)
     //      Blue_State = !Blue_State;
+    //FastLED[0].showLeds(128);
     FastLED.show();
     leds[0] = CRGB::Red;
     strobeWait += strobeDelay;
   }
 }
 void ledMethod(bool param) {
-  unsigned long currentMillisB = millis();
-  if ((param == 1 ) && (currentMillisB - previousMillisB >= OnTimeB)) {
+  //unsigned long currentMillisB = millis();
+  if (param == 1 ) {
+    //if ((param == 1 ) && (currentMillisB - previousMillisB >= OnTimeB)) {
+    //FastLED.setBrightness(255);
     FastLED.show();
+    //FastLED.setBrightness(128);
     leds[1] = CHSV(random8(255), 255, 255);
     leds[2] = CHSV(random8(255), 255, 255);
-  } else if ((param == 0) && (currentMillisB - previousMillisB >= OffTimeB)) {
+  }else{
+    // } else if ((param == 0) && (currentMillisB - previousMillisB >= OffTimeB)) {
+    //    FastLED[1].showLeds(5);
+    //    FastLED[2].showLeds(5);
     FastLED.show();
-    leds[1] = CRGB::Pink;
-    leds[2] = CRGB::Blue;
+    //FastLED.setBrightness(5);
+    //leds[1] = CRGB::Yellow;
+    //leds[2] = CRGB::Yellow;
+    leds[1] = CHSV(64, 150, 128);
+    leds[2] = CHSV(64, 150, 128);
   }
 }
 //OSC CALLBACK
